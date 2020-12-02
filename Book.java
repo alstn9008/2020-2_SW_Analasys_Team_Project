@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class Library here.
+ * Write a description of class Book here.
  *
- * @author (사사키 야스오, 우노 히데노리, 사토 리츠시, 2017210105 김민수)
+  * @author (사사키 야스오, 우노 히데노리, 사토 리츠시, 2017210105 김민수)
  * @version (a version number or a date)
  */
-public class Library
+public class Book
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class Library
+     * Constructor for objects of class Book
      */
-    public Library()
+    public Book()
     {
         // initialise instance variables
         x = 0;
