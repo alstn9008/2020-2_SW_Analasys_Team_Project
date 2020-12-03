@@ -1,4 +1,4 @@
-
+import java.util.Calendar;
 /**
  * Write a description of class Loan here.
  *
@@ -9,11 +9,16 @@ public class Loan
 {
     private Book book;
     private Borrower borrower;
+    private Calendar checkoutDate;
+    private Calendar returnDate;
 
     public Loan(Book book, Borrower borrower)
     {
         this.book= book;
         this.borrower = borrower;
+        this.checkoutDate = Calendar.getInstance();
+        this.returnDate = Calendar.getInstance();
+        returnDate.add(checkoutDate.DATE, 290);
     }
 
     public void detach(int catalogueNumber)
@@ -21,4 +26,16 @@ public class Loan
         this.book.detachBorrower();
         this.borrower.detachBook(catalogueNumber);
     }
+    
+    // public void getDateTest(){
+        // System.out.print("대출날짜 : ");
+        // System.out.print(checkoutDate.get(Calendar.YEAR) + "년");
+        // System.out.print(checkoutDate.get(Calendar.MONTH) + "월");
+        // System.out.println(checkoutDate.get(Calendar.DATE) + "일");
+        // System.out.print("반납날짜");
+        // System.out.print(returnDate.get(Calendar.YEAR) + "년");
+        // System.out.print(returnDate.get(Calendar.MONTH) + "월");
+        // System.out.println(returnDate.get(Calendar.DATE) + "일");
+        
+    // }
 }
