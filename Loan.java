@@ -16,9 +16,9 @@ public class Loan
         this.borrower = borrower;
     }
 
-    public void detach()
+    public void detach(int catalogueNumber)
     {
         this.book.detachBorrower();
-        this.borrower.detachBook();
+        this.borrower.detachBook(catalogueNumber);
     }
 }

@@ -44,4 +44,7 @@ public class Book
         }
     }
     
+    public int getCatalogueNumber(){
+        return this.catalogueNumber;
+    }
 }
