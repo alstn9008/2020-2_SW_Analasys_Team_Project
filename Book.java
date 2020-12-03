@@ -7,27 +7,24 @@
  */
 public class Book
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Book
-     */
-    public Book()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    private String title;
+    private String author;
+    private int catalogueNumber;
+    private Borrower borrower;
+    
+    public Book(String title, String author, int catalogueNumber)
+    {}
+    
+    public void attachBorrower(Borrower borrower)
+    {}
+    
+    public void detachBorrower()
+    {}
+    
+    public Borrower getBorrower()
+    {}
+    
+    public boolean is_a_loan_abaliable()
+    {}
+    
 }

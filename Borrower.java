@@ -7,27 +7,33 @@
  */
 public class Borrower
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Borrower
-     */
-    public Borrower()
+    private String name;
+    private Book borrowedBooks;
+    
+    public Borrower(String name)
+    {}
+    
+    public void attachBook(Book book)
+    {}
+    
+    public void detachBook()
+    {}
+    
+    public int compareTo(Object obj)
     {
-        // initialise instance variables
-        x = 0;
+        return 0;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    
+    public void checkLoan()
+    {}
+    
+    public int hashCode()
     {
-        // put your code here
-        return x + y;
+        return 0;
     }
+    
+    public Book getBook()
+    {}
+    
+    
 }
