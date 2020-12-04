@@ -1,9 +1,9 @@
 import java.util.Calendar;
 /**
- * Write a description of class Loan here.
+ * LibraryApplication에서의 loan object가 갖는 phild와 method를 모아 놓은 class.
  *
  * @author (2019315066 사사키 야스오, 2019315065 우노 히데노리, 2019315064 사토 리츠시, 2017210105 김민수)
- * @version (a version number or a date)
+ * @version (2020.12.3)
  */
 public class Loan
 {
@@ -12,6 +12,9 @@ public class Loan
     private Calendar checkoutDate;
     private Calendar returnDate;
 
+    /**
+     * Constructor for objects of class Loan
+     */
     public Loan(Book book, Borrower borrower)
     {
         this.book= book;
@@ -21,6 +24,11 @@ public class Loan
         returnDate.add(checkoutDate.DATE, 290);
     }
 
+    /**
+     *  이 대출에서 대출된 book object와 borrower object의 연결을 끈는다.
+     *
+     * @param  반납하려는 book의 catalogue number
+     */
     public void detach(int catalogueNumber)
     {
         this.book.detachBorrower();
