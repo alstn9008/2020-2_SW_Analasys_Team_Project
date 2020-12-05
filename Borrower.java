@@ -10,29 +10,15 @@ public class Borrower
 {
     private String name;
     private ArrayList<Book> borrowerBooks;
-    
-    /**
-     * Constructor for objects of class Borrower
-     */
     public Borrower(String name){
         this.name = name;
         ArrayList<Book> borrowerBooks;
     }
     
-    /**
-     * borrower object에 book object를 연결한다.
-     *
-     * @param  연결할 book object
-     */
     public void attachBook(Book book){
         borrowerBooks.add(book);
     }
     
-    /**
-     * borrower object에 있는 book object와의 연결을 끈는다.
-     *
-     * @param  이 borrower object에 연결되어 있는 book object의 catalogue number
-     */
     public void detachBook(int catalogueNumber){
         for(int i = 0; i < borrowerBooks.size(); i++){
             Book temp = borrowerBooks.get(i); 
@@ -42,19 +28,14 @@ public class Borrower
         }
     }
     
-    /**
-     * 이 borrower가 반납일이 지난 book을 대출해 있는지 여부를 확인한다.
-     *
-     */
     public void checkLoan(){
         
     }
     
-    /**
-     * 이 borrower가 대출 중인 book을 확인한다.
-     *
-     * @return    이 borrower가 대출한 book object가 들어 있는 ArrayList를 return.
-     */
+    public String getName(){
+        return this.name;
+    }
+    
     public ArrayList<Book> getBook(){
         return borrowerBooks;
     }
