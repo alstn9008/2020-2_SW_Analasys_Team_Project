@@ -1,33 +1,35 @@
-
+import java.util.ArrayList;
+import java.util.Iterator;
 /**
  * Write a description of class User here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (2019315066 사사키 야스오, 2019315065 우노 히데노리, 2019315064 사토 리츠시, 2017210105 김민수)
+ * @version (2020.12.05)
  */
-public class User
+public class User extends ArrayList
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class User
-     */
-    public User()
-    {
-        // initialise instance variables
-        x = 0;
+    public void addBorrower(Borrower borrower){
+        this.add(borrower);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public Borrower getBorrower(){
+        Iterator iter = this.iterator();
+        while(iter.hasNext()){
+            Borrower borrower = (Borrower)iter.next();
+            return borrower;
+        }
+        return null;
+    }
+
+    public Borrower findBorrower(String name){
+        Iterator iter = this.iterator();
+        Borrower borrower;
+        while(iter.hasNext()){
+            borrower = (Borrower)iter.next();
+            if(name == borrower.getName()){
+                return borrower;
+            }
+        }
+        return null;
     }
 }
