@@ -9,29 +9,29 @@ import java.util.Collections;
  */
 public class StorageBooks extends ArrayList
 {
+    ArrayList<Book> SBs = new ArrayList<>();
+    Iterator<Book> iter;
+    
     public void addBook(Book book){
-        Iterator<Book> iter = this.iterator();
-        Book temp;
-        if(this.isEmpty()){
-            this.add(book);
+        iter = SBs.iterator();
+        int bCN = book.getCatalogueNumber();
+        if(SBs.isEmpty()){
+            SBs.add(book);
         }
         else{
-            //Iterator iter = this.iterator();
-            int bookCN = book.getCatalogueNumber();
-            int count = 0;
-            while(iter.hasNext()){
-                temp = iter.next();
+            for(int i = 0; i < SBs.size(); i++){
+                Book temp = SBs.get(i);
                 int tempCN = temp.getCatalogueNumber();
-                if(tempCN > bookCN){
-                    this.add(count, book);
+                if(bCN < tempCN){
+                    SBs.add(i, book);
                 }
-                count++;
             }
+            SBs.add(book);
         }
     }
     
     public Book getBook(){
-        Iterator iter = this.iterator();
+        Iterator iter = SBs.iterator();
         while(iter.hasNext()){
             Book book = (Book)iter.next();
             return book;
@@ -40,7 +40,7 @@ public class StorageBooks extends ArrayList
     }
     
     public Book findBook(int catalogueNumber){
-        Iterator iter = this.iterator();
+        Iterator iter = SBs.iterator();
         Book book;
         while(iter.hasNext()){
             book = (Book)iter.next();
@@ -49,5 +49,9 @@ public class StorageBooks extends ArrayList
             }
         }
         return null;
+    }
+    
+    public ArrayList<Book> getStorageBooks(){
+        return SBs;
     }
 }

@@ -9,12 +9,12 @@ import java.util.Iterator;
 public class Library
 {
     private String name;
-    private ArrayList<Book> property;
+    private StorageBooks SBs;
     private Users users;
     private ArrayList<Loan> loan;
     public Library(String name){
         this.name = name;
-        //property = new ArrayList<Book>();
+        SBs = new StorageBooks();
         users = new Users();
         //loan = new ArrayList<Loan>();
     }
@@ -23,7 +23,7 @@ public class Library
     {
         ArrayList temp = users.getBorrower();
         Iterator iter = temp.iterator();
-        int count = 0;
+        int count = 1;
         while(iter.hasNext())
         {
             Borrower user = (Borrower)iter.next();
@@ -31,56 +31,41 @@ public class Library
             count++;
         }
     }
+    
+    public void printBook(){
+        ArrayList temp = SBs.getStorageBooks();
+        Iterator iter = temp.iterator();
+        int count = 1;
+        while(iter.hasNext()){
+            Book book = (Book)iter.next();
+            System.out.println("book" + count + " : " + book.getTitle() + " " + book.getAuthor() + " " + book.getCatalogueNumber());
+            count++;
+        }
+    }
 
     public void registerOneBorrower(String name)
     {
         Borrower user = users.findBorrower(name);// この名前の人いる？　いれば利用者を居なければnull　RETURN
-        if(user == null)
-        {
+        if(user == null){
             Borrower newBorrower = new Borrower(name);
             users.addBorrower(newBorrower);
         }
-        else
-        {
+        else{
             System.out.println("같은 이름을 가진 사용자가 등록되어 있습니다. 다른 이름으로 등록해 주십시오.");
         }
     }
-
-    // public void registerOneBorrower(String name){
-    // Iterator<Borrower> userIte = user.iterator();
-    // while(userIte.hasNext()){
-    // Borrower user = userIte.next();
-    // String userName = user.getName();
-    // if(name == userName){
-    // System.out.println("already borrower was registered");
-    // break;
-    // }
-    // }
-    // Borrower newBorrower = new Borrower(name);
-    // user.add(newBorrower);
-    // System.out.println("It has been processed normally");
-    // }
-
-    public void registerOneBook(String title, String author, int catalogueNumber){
-        Iterator<Book> proIte = property.iterator();
-        while(proIte.hasNext()){
-            Book book = proIte.next();
-            int cN = book.getCatalogueNumber();
-            if(catalogueNumber == cN){
-                System.out.println("already borrower was registered");
-                break;
-            }
-        }
-        Book newBook = new Book(title, author);
-        property.add(newBook);
+    
+    public void registerOneBook(String title, String author){
+        Book book = new Book(title, author);
+        SBs.addBook(book);
         System.out.println("It has been processed normally");
     }
-
+    
     public void displayForLoan(){
-        System.out.println("Title Author CatalogueNumber");
-        Iterator<Book> proIte = property.iterator();
-        while(proIte.hasNext()){
-            Book book = proIte.next();
+        ArrayList SBsArray = SBs.getStorageBooks();
+        Iterator<Book> iter = SBsArray.iterator();
+        while(iter.hasNext()){
+            Book book = iter.next();
             if(book.is_a_loan_abaliable()){
                 System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getCatalogueNumber());
             }
@@ -88,20 +73,20 @@ public class Library
     }
 
     public void displayOnLoan(){
-        System.out.println("Title Author CatalogueNumber");
-        Iterator<Book> proIte = property.iterator();
-        while(proIte.hasNext()){
-            Book book = proIte.next();
+        ArrayList SBsArray = SBs.getStorageBooks();
+        Iterator<Book> iter = SBsArray.iterator();
+        while(iter.hasNext()){
+            Book book = iter.next();
             if(!(book.is_a_loan_abaliable())){
                 System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getCatalogueNumber());
             }
         }
     }
-
+    
     public void lendOneBook(int catalogueNumber, String name){
 
     }
-
+    
     public void returnOneBook(int catalogueNumber, String name){
 
     }
