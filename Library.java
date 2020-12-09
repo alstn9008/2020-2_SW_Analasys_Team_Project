@@ -84,10 +84,13 @@ public class Library
     }
     
     public void lendOneBook(int catalogueNumber, String name){
-
+        ArrayList SBsArray = SBs.getStorageBooks();
+        if(SBsArray.findBook(catalogueNumber) == null){
+            
+        }
     }
     
     public void returnOneBook(int catalogueNumber, String name){
-
+        
     }
 }

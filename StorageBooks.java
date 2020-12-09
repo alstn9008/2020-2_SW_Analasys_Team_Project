@@ -9,11 +9,13 @@ import java.util.Collections;
  */
 public class StorageBooks extends ArrayList
 {
-    ArrayList<Book> SBs = new ArrayList<>();
-    Iterator<Book> iter;
+    private ArrayList<Book> SBs;
+    public StorageBooks(){
+        this.SBs = new ArrayList<>();
+    }
     
     public void addBook(Book book){
-        iter = SBs.iterator();
+        Iterator<Book> iter = SBs.iterator();
         int bCN = book.getCatalogueNumber();
         if(SBs.isEmpty()){
             SBs.add(book);
@@ -31,7 +33,7 @@ public class StorageBooks extends ArrayList
     }
     
     public Book getBook(){
-        Iterator iter = SBs.iterator();
+        Iterator<Book> iter = SBs.iterator();
         while(iter.hasNext()){
             Book book = (Book)iter.next();
             return book;
@@ -40,7 +42,7 @@ public class StorageBooks extends ArrayList
     }
     
     public Book findBook(int catalogueNumber){
-        Iterator iter = SBs.iterator();
+        Iterator<Book> iter = SBs.iterator();
         Book book;
         while(iter.hasNext()){
             book = (Book)iter.next();

@@ -44,6 +44,15 @@ public class Main
                     System.out.println("Title Author CatalogueNumber");
                     library.displayOnLoan();
                     break;
+                case 5:
+                    System.out.println("input the CatalogueNumber");
+                    int cn = scan.nextInt();
+                    System.out.println("input the your name");
+                    String name = scan.next();
+                    library.lendOneBook(cn, name);
+                    break;
+                case 6:
+                    break;
             }
         }
         while(choice != 0);
