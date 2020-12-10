@@ -16,36 +16,33 @@ public class Library
         this.name = name;
         SBs = new StorageBooks();
         users = new Users();
-        //loan = new ArrayList<Loan>();
+        loans = new Loans();
     }
-    
-    public void printBorrower()//이용자가 등록되었는지를 확인을 위해
+
+    public void printBorrower()
     {
         ArrayList temp = users.getBorrower();
         Iterator iter = temp.iterator();
-        int count = 1;
         while(iter.hasNext())
         {
             Borrower user = (Borrower)iter.next();
-            System.out.println("이용자" + count + " : " + user.getName());
-            count++;
+            System.out.println("name : " + user.getName());
         }
     }
-    
+
     public void printBook(){
         ArrayList temp = SBs.getStorageBooks();
         Iterator iter = temp.iterator();
-        int count = 1;
         while(iter.hasNext()){
             Book book = (Book)iter.next();
-            System.out.println("book" + count + " : " + book.getTitle() + " " + book.getAuthor() + " " + book.getCatalogueNumber());
-            count++;
+            System.out.println("Title : " + book.getTitle() + ", Author : " + book.getAuthor() + 
+                ", CatalogueNumber : " + book.getCatalogueNumber());
         }
     }
 
     public void registerOneBorrower(String name)
     {
-        Borrower user = users.findBorrower(name);// この名前の人いる？　いれば利用者を居なければnull　RETURN
+        Borrower user = users.findBorrower(name);
         if(user == null){
             Borrower newBorrower = new Borrower(name);
             users.addBorrower(newBorrower);
@@ -55,35 +52,37 @@ public class Library
             System.out.println("같은 이름을 가진 사용자가 등록되어 있습니다. 다른 이름으로 등록해 주십시오.");
         }
     }
-    
+
     public void registerOneBook(String title, String author){
         Book book = new Book(title, author);
         SBs.addBook(book);
         System.out.println("It has been processed normally");
     }
-    
-    public void displayForLoan(){
+
+    public void displayBooksAvailableForLoan(){
         ArrayList SBsArray = SBs.getStorageBooks();
         Iterator<Book> iter = SBsArray.iterator();
         while(iter.hasNext()){
             Book book = iter.next();
             if(book.isALoanAvailable()){
-                System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getCatalogueNumber());
+                System.out.println("Title : " + book.getTitle() + ", Author : " + book.getAuthor() + 
+                ", CatalogueNumber : " + book.getCatalogueNumber());
             }
         }
     }
 
-    public void displayOnLoan(){
+    public void displayBooksUnavailableForLoan(){
         ArrayList SBsArray = SBs.getStorageBooks();
         Iterator<Book> iter = SBsArray.iterator();
         while(iter.hasNext()){
             Book book = iter.next();
             if(!(book.isALoanAvailable())){
-                System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getCatalogueNumber());
+                System.out.println("Title : " + book.getTitle() + ", Author : " + book.getAuthor() + 
+                ", CatalogueNumber : " + book.getCatalogueNumber());
             }
         }
     }
-    
+
     public void lendOneBook(int catalogueNumber, String name){
         Book book = SBs.findBook(catalogueNumber);
         Borrower borrower = users.findBorrower(name);
@@ -107,8 +106,15 @@ public class Library
             }
         }
     }
-    
-    public void returnOneBook(int catalogueNumber, String name){
-        
+
+    public void returnOneBook(int catalogueNumber){
+        Book book = SBs.findBook(catalogueNumber);
+        if(book != null){
+            Loan loan = book.getLoan();
+
+        }
+        else{
+
+        }
     }
 }

@@ -28,7 +28,7 @@ public class Borrower
             }
         }
     }
-
+    
     public boolean checkBorrower(){
         try{
             // boolean result = loans.checkLoan();
@@ -37,7 +37,7 @@ public class Borrower
         }catch(NullPointerException e){
             System.out.println("nullです");
         }
-        return false;
+        return true;
     }
 
     public String getName(){

@@ -11,6 +11,7 @@ public class Book
     private String author;
     private int catalogueNumber;
     private Borrower borrower;
+    private Loan loan;
     
     public Book(String title, String author)
     {
@@ -54,5 +55,9 @@ public class Book
     
     public int getCatalogueNumber(){
         return this.catalogueNumber;
+    }
+    
+    public Loan getLoan(){
+        return loan;
     }
 }

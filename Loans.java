@@ -6,14 +6,14 @@ import java.util.Iterator;
  * @author (2019315066 사사키 야스오, 2019315065 우노 히데노리, 2019315064 사토 리츠시, 2017210105 김민수)
  * @version (2020.12.03)
  */
-public class Loans extends ArrayList
+public class Loans
 {
     ArrayList<Loan> loans;
     public Loans()
     {
         this.loans = new ArrayList();
     }
-
+    
     public boolean checkLoan()
     {
         try{
@@ -26,9 +26,6 @@ public class Loans extends ArrayList
                 {
                     return false;
                 }
-                // else if(loan.equals(null)){
-                // System.out.println("null");
-                // }
             }
         }catch(NullPointerException e){
             System.out.println("nullだよ");

@@ -18,9 +18,9 @@ public class Main
             switch(choice)
             {
                 case 0:
-                    System.out.println("\n" + "프로그램 종료!" + "\n");
+                    System.out.println("프로그램 종료!" + "\n");
                     System.out.println();
-                    // scan.close();
+                    scan.close();
                     break;
                 case 1:
                     System.out.println("사용자 이름을 입력하시오 : ");
@@ -37,12 +37,10 @@ public class Main
                     library.printBook();
                     break;
                 case 3:
-                    System.out.println("Title Author CatalogueNumber");
-                    library.displayForLoan();
+                    library.displayBooksAvailableForLoan();
                     break;
                 case 4:
-                    System.out.println("Title Author CatalogueNumber");
-                    library.displayOnLoan();
+                    library.displayBooksUnavailableForLoan();
                     break;
                 case 5:
                     System.out.println("input the CatalogueNumber");
