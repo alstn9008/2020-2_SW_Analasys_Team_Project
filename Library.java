@@ -11,7 +11,7 @@ public class Library
     private String name;
     private StorageBooks SBs;
     private Users users;
-    private ArrayList<Loan> loan;
+    private Loans loans;
     public Library(String name){
         this.name = name;
         SBs = new StorageBooks();
@@ -66,7 +66,7 @@ public class Library
         Iterator<Book> iter = SBsArray.iterator();
         while(iter.hasNext()){
             Book book = iter.next();
-            if(book.is_a_loan_abaliable()){
+            if(book.isALoanAvailable()){
                 System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getCatalogueNumber());
             }
         }
@@ -77,16 +77,33 @@ public class Library
         Iterator<Book> iter = SBsArray.iterator();
         while(iter.hasNext()){
             Book book = iter.next();
-            if(!(book.is_a_loan_abaliable())){
+            if(!(book.isALoanAvailable())){
                 System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getCatalogueNumber());
             }
         }
     }
     
     public void lendOneBook(int catalogueNumber, String name){
-        ArrayList SBsArray = SBs.getStorageBooks();
-        if(SBsArray.findBook(catalogueNumber) == null){
-            
+        Book book = SBs.findBook(catalogueNumber);
+        Borrower borrower = users.findBorrower(name);
+        if(book.equals(null)){
+            System.out.println("could not find book");
+        }else{
+            if(!(book.isALoanAvailable())){
+                System.out.println("Not available for lending");
+            }else{
+                if(borrower == null){
+                    System.out.println("could not find borrower");
+                }else{
+                    if(!(borrower.checkBorrower())){
+                        System.out.println("You can not loan");
+                    }else{
+                        Loan loan = new Loan(book, borrower);
+                        loans.addLoan(loan);
+                        System.out.println("The loan has been completed");
+                    }
+                }
+            }
         }
     }
     

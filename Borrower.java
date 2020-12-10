@@ -10,15 +10,16 @@ public class Borrower
 {
     private String name;
     private ArrayList<Book> borrowerBooks;
+    private Loans loans;
     public Borrower(String name){
         this.name = name;
         ArrayList<Book> borrowerBooks;
     }
-    
+
     public void attachBook(Book book){
         borrowerBooks.add(book);
     }
-    
+
     public void detachBook(int catalogueNumber){
         for(int i = 0; i < borrowerBooks.size(); i++){
             Book temp = borrowerBooks.get(i); 
@@ -27,15 +28,22 @@ public class Borrower
             }
         }
     }
-    
-    public void checkLoan(){
-        
+
+    public boolean checkBorrower(){
+        try{
+            boolean result = loans.checkLoan();
+            return result;
+            //return loans.checkLoan();
+        }catch(NullPointerException e){
+            System.out.println("nullです");
+        }
+        return true;
     }
-    
+
     public String getName(){
         return this.name;
     }
-    
+
     public ArrayList<Book> getBook(){
         return borrowerBooks;
     }

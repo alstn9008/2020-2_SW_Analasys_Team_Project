@@ -18,7 +18,9 @@ public class Loan
         this.borrower = borrower;
         this.checkoutDate = Calendar.getInstance();
         this.returnDate = Calendar.getInstance();
-        returnDate.add(checkoutDate.DATE, 290);
+        returnDate.add(checkoutDate.DATE, 14);
+        borrower.attachBook(book);
+        book.attachBorrower(borrower);
     }
 
     public void detach(int catalogueNumber)
@@ -38,4 +40,20 @@ public class Loan
         // System.out.println(returnDate.get(Calendar.DATE) + "일");
         
     // }
+    
+    public boolean checkDeadline()
+    {
+        Calendar currentDate = Calendar.getInstance();
+        int result = currentDate.compareTo(this.returnDate);
+        if(result <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public Calendar getReturnDate()
+    {
+        return returnDate;
+    }
 }

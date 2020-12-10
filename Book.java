@@ -34,7 +34,7 @@ public class Book
         return this.borrower;
     }
     
-    public boolean is_a_loan_abaliable()
+    public boolean isALoanAvailable()
     {
         if(this.borrower == null){
             return true;// able to loan
