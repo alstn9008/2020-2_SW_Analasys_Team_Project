@@ -31,13 +31,13 @@ public class Borrower
 
     public boolean checkBorrower(){
         try{
-            boolean result = loans.checkLoan();
-            return result;
-            //return loans.checkLoan();
+            // boolean result = loans.checkLoan();
+            // return result;
+            return loans.checkLoan();
         }catch(NullPointerException e){
             System.out.println("nullです");
         }
-        return true;
+        return false;
     }
 
     public String getName(){

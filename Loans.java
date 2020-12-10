@@ -3,10 +3,10 @@ import java.util.Iterator;
 /**
  * Write a description of class Loans here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (2019315066 사사키 야스오, 2019315065 우노 히데노리, 2019315064 사토 리츠시, 2017210105 김민수)
+ * @version (2020.12.03)
  */
-public class Loans
+public class Loans extends ArrayList
 {
     ArrayList<Loan> loans;
     public Loans()

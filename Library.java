@@ -49,6 +49,7 @@ public class Library
         if(user == null){
             Borrower newBorrower = new Borrower(name);
             users.addBorrower(newBorrower);
+            System.out.println("It has been processed normally");
         }
         else{
             System.out.println("같은 이름을 가진 사용자가 등록되어 있습니다. 다른 이름으로 등록해 주십시오.");
